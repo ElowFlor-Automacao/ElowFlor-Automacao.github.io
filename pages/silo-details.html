@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Silo | Monitoramento ElowFlor</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Estilos Globais -->
+    <link rel="stylesheet" href="/styles/styles.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            teal: '#236D75',
+                            green: '#4D8329',
+                            blue: '#1B6790',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- Navegação Superior -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2 text-brand-teal font-bold text-xl">
+                    <i class="ph-fill ph-plant text-brand-green text-2xl"></i>
+                    ElowFlor <span class="text-gray-400 font-normal text-sm ml-2 hidden sm:inline">| Painel do Cliente</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="h-8 w-px bg-gray-200"></div>
+                    <div class="flex items-center gap-3 cursor-pointer group">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-sm font-semibold text-gray-700 group-hover:text-brand-teal transition-colors">Fazenda Boa Vista</p>
+                            <p class="text-xs text-gray-500">Administrador</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-brand-teal/10 text-brand-teal flex items-center justify-center text-xl">
+                            <i class="ph ph-user"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-grow p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full">
+        
+        <!-- Breadcrumb e Título -->
+        <div class="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <a href="/pages/dashboard.html" class="text-sm text-gray-500 hover:text-brand-teal flex items-center gap-1 mb-2 transition-colors w-max">
+                    <i class="ph ph-arrow-left"></i> Voltar ao Painel
+                </a>
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 flex items-center gap-3">
+                    Silo 01 
+                    <span class="inline-flex items-center rounded-full bg-yellow-50 px-3 py-1 text-sm font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">Milho</span>
+                </h1>
+            </div>
+            <div class="flex gap-2">
+                <button class="bg-white border border-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition shadow-sm flex items-center gap-2">
+                    <i class="ph ph-sliders"></i> Configurar Alertas
+                </button>
+                <button onclick="updateSensors()" class="bg-brand-teal text-white px-4 py-2 rounded-lg font-medium hover:bg-brand-blue transition shadow-sm flex items-center gap-2">
+                    <i class="ph ph-arrows-clockwise" id="refreshIcon"></i> Atualizar
+                </button>
+            </div>
+        </div>
+
+        <!-- Grid Principal (Visualização vs Gráficos) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Coluna Esquerda: Visualização do Silo em Destaque -->
+            <div class="lg:col-span-1 bg-white rounded-2xl shadow-sm border border-gray-100 p-8 flex flex-col items-center justify-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-brand-teal"></div>
+                <h2 class="text-lg font-semibold text-gray-700 mb-8 w-full text-left flex justify-between items-center">
+                    Status de Preenchimento
+                    <span class="text-xs font-normal text-green-600 bg-green-50 px-2 py-1 rounded flex items-center gap-1"><div class="w-1.5 h-1.5 rounded-full bg-green-500"></div> Sensor Online</span>
+                </h2>
+                
+                <!-- Desenho Grande do Silo -->
+                <div class="relative w-48 h-80 bg-gray-50 border-4 border-gray-300 rounded-t-[4rem] rounded-b-xl shadow-inner overflow-hidden mb-8">
+                    <div class="absolute inset-0 flex flex-col justify-between py-8 opacity-30 pointer-events-none z-10">
+                        <div class="border-b-2 border-gray-500 w-full flex justify-end pr-2"><span class="text-xs font-bold">75%</span></div>
+                        <div class="border-b-2 border-gray-500 w-full flex justify-end pr-2"><span class="text-xs font-bold">50%</span></div>
+                        <div class="border-b-2 border-gray-500 w-full flex justify-end pr-2"><span class="text-xs font-bold">25%</span></div>
+                    </div>
+                    <div class="absolute bottom-0 w-full bg-brand-teal liquid-fill h-0 z-0" data-target="65"></div>
+                </div>
+
+                <div class="w-full bg-gray-50 p-4 rounded-xl border border-gray-100 text-center">
+                    <span class="text-3xl font-bold text-brand-teal">65%</span>
+                    <p class="text-sm text-gray-500 mt-1">Aproximadamente 520 toneladas</p>
+                </div>
+            </div>
+
+            <!-- Coluna Direita: Dados de Sensores e Gráficos -->
+            <div class="lg:col-span-2 flex flex-col gap-6">
+                <!-- Cards Numéricos -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex items-center gap-5">
+                        <div class="w-14 h-14 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center text-3xl">
+                            <i class="ph ph-thermometer"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium">Temperatura Interna</p>
+                            <p class="text-3xl font-bold text-gray-900 sensor-temp">24.5 °C</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex items-center gap-5">
+                        <div class="w-14 h-14 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center text-3xl">
+                            <i class="ph ph-drop"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium">Umidade Relativa</p>
+                            <p class="text-3xl font-bold text-gray-900 sensor-hum">13.2 %</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="/scripts/dashboard.js"></script>
+</body>
+</html>
