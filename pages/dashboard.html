@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Monitoramento ElowFlor</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/icon.png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Phosphor Icons -->
@@ -37,11 +39,14 @@
     <!-- Navegação Superior (Estilo Sistema) -->
     <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
+            <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <div class="flex items-center gap-2 text-brand-teal font-bold text-xl">
-                    <i class="ph-fill ph-plant text-brand-green text-2xl"></i>
-                    ElowFlor <span class="text-gray-400 font-normal text-sm ml-2 hidden sm:inline">| Painel do Cliente</span>
+                <div class="flex items-center">
+                    <a href="/pages/dashboard.html" class="flex items-center gap-2">
+                        <img src="/assets/icon.png" alt="Ícone ElowFlor" class="h-10 w-auto">
+                        <img src="/assets/escrita.png" alt="Logo ElowFlor" class="h-16 w-auto">
+                    </a>
+                    <span class="text-gray-400 font-normal text-sm ml-4 hidden sm:inline">| Painel do Cliente</span>
                 </div>
 
                 <!-- Perfil do Usuário e Notificações -->
@@ -156,7 +161,7 @@
                             <span class="text-gray-500 text-xs">Status</span>
                             <span class="text-green-600 text-xs font-bold flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-green-500"></div> Online</span>
                         </div>
-                    <a href="/pages/silo-details.html" class="mt-4 block w-full text-center bg-brand-teal/10 hover:bg-brand-teal text-brand-teal hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
+                    <a href="/pages/silo-details.html?id=1" class="mt-4 block w-full text-center bg-brand-teal/10 hover:bg-brand-teal text-brand-teal hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
                     </div>
                 </div>
             </div>
@@ -193,7 +198,7 @@
                             <span class="text-gray-500 text-xs">Status</span>
                             <span class="text-green-600 text-xs font-bold flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-green-500"></div> Online</span>
                         </div>
-                    <a href="/pages/silo-details.html" class="mt-4 block w-full text-center bg-brand-green/10 hover:bg-brand-green text-brand-green hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
+                    <a href="/pages/silo-details.html?id=2" class="mt-4 block w-full text-center bg-brand-green/10 hover:bg-brand-green text-brand-green hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
                     </div>
                 </div>
             </div>
@@ -230,7 +235,7 @@
                             <span class="text-gray-500 text-xs">Status</span>
                             <span class="text-red-600 text-xs font-bold flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-red-500"></div> Cheio / Temp. Alta</span>
                         </div>
-                    <a href="/pages/silo-details.html" class="mt-4 block w-full text-center bg-red-100 hover:bg-red-500 text-red-600 hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
+                    <a href="/pages/silo-details.html?id=3" class="mt-4 block w-full text-center bg-red-100 hover:bg-red-500 text-red-600 hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
                     </div>
                 </div>
             </div>
@@ -267,7 +272,7 @@
                             <span class="text-gray-500 text-xs">Status</span>
                             <span class="text-green-600 text-xs font-bold flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-green-500"></div> Online</span>
                         </div>
-                    <a href="/pages/silo-details.html" class="mt-4 block w-full text-center bg-brand-blue/10 hover:bg-brand-blue text-brand-blue hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
+                    <a href="/pages/silo-details.html?id=4" class="mt-4 block w-full text-center bg-brand-blue/10 hover:bg-brand-blue text-brand-blue hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
                     </div>
                 </div>
             </div>
@@ -304,7 +309,7 @@
                             <span class="text-gray-500 text-xs">Status</span>
                             <span class="text-green-600 text-xs font-bold flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-green-500"></div> Online</span>
                         </div>
-                    <a href="/pages/silo-details.html" class="mt-4 block w-full text-center bg-brand-teal/10 hover:bg-brand-teal text-brand-teal hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
+                    <a href="/pages/silo-details.html?id=5" class="mt-4 block w-full text-center bg-brand-teal/10 hover:bg-brand-teal text-brand-teal hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
                     </div>
                 </div>
             </div>

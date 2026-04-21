@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do Silo | Monitoramento ElowFlor</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/icon.png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Phosphor Icons -->
@@ -37,10 +39,13 @@
     <!-- Navegação Superior -->
     <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center gap-2 text-brand-teal font-bold text-xl">
-                    <i class="ph-fill ph-plant text-brand-green text-2xl"></i>
-                    ElowFlor <span class="text-gray-400 font-normal text-sm ml-2 hidden sm:inline">| Painel do Cliente</span>
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <a href="/pages/dashboard.html" class="flex items-center gap-2">
+                        <img src="/assets/icon.png" alt="Ícone ElowFlor" class="h-10 w-auto">
+                        <img src="/assets/escrita.png" alt="Logo ElowFlor" class="h-16 w-auto">
+                    </a>
+                    <span class="text-gray-400 font-normal text-sm ml-4 hidden sm:inline">| Painel do Cliente</span>
                 </div>
                 <div class="flex items-center space-x-4">
                     <div class="h-8 w-px bg-gray-200"></div>
@@ -136,6 +141,53 @@
         </div>
     </main>
     
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mock data for silos, mirroring the dashboard for consistency
+            const siloData = {
+                '1': { name: 'Silo 01', grain: 'Milho', grainClass: 'bg-yellow-50 text-yellow-800 ring-yellow-600/20', level: 65, temp: 24.5, humidity: 13.2, status: 'Online', statusClass: 'text-green-600 bg-green-50', statusDot: 'bg-green-500', fillClass: 'bg-brand-teal' },
+                '2': { name: 'Silo 02', grain: 'Soja', grainClass: 'bg-green-50 text-green-800 ring-green-600/20', level: 42, temp: 22.1, humidity: 11.8, status: 'Online', statusClass: 'text-green-600 bg-green-50', statusDot: 'bg-green-500', fillClass: 'bg-brand-green' },
+                '3': { name: 'Silo 03', grain: 'Soja', grainClass: 'bg-green-50 text-green-800 ring-green-600/20', level: 98, temp: 28.4, humidity: 14.1, status: 'Cheio / Temp. Alta', statusClass: 'text-red-600 bg-red-50', statusDot: 'bg-red-500', fillClass: 'bg-red-500' },
+                '4': { name: 'Silo 04', grain: 'Trigo', grainClass: 'bg-gray-100 text-gray-800 ring-gray-500/20', level: 15, temp: 20.5, humidity: 10.5, status: 'Online', statusClass: 'text-green-600 bg-green-50', statusDot: 'bg-green-500', fillClass: 'bg-brand-blue' },
+                '5': { name: 'Silo 05', grain: 'Milho', grainClass: 'bg-yellow-50 text-yellow-800 ring-yellow-600/20', level: 82, temp: 23.8, humidity: 12.4, status: 'Online', statusClass: 'text-green-600 bg-green-50', statusDot: 'bg-green-500', fillClass: 'bg-brand-teal' }
+            };
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const siloId = urlParams.get('id') || '1'; // Default to '1' if no ID is found
+            const data = siloData[siloId];
+
+            if (data) {
+                // Update Page Title
+                document.title = `Detalhes do ${data.name} | Monitoramento ElowFlor`;
+
+                // Update Header
+                const header = document.querySelector('h1');
+                header.innerHTML = `
+                    ${data.name} 
+                    <span class="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium ${data.grainClass}">${data.grain}</span>
+                `;
+
+                // Update Sensor Status
+                const statusSpan = document.querySelector('h2 span');
+                const statusText = data.status === 'Online' ? 'Sensor Online' : data.status;
+                statusSpan.className = `text-xs font-normal ${data.statusClass} px-2 py-1 rounded flex items-center gap-1`;
+                statusSpan.innerHTML = `<div class="w-1.5 h-1.5 rounded-full ${data.statusDot}"></div> ${statusText}`;
+
+                // Update Silo Visualization
+                const liquidFill = document.querySelector('.liquid-fill');
+                liquidFill.className = `absolute bottom-0 w-full liquid-fill h-0 z-0 ${data.fillClass}`;
+                liquidFill.setAttribute('data-target', data.level);
+                
+                document.querySelector('.w-full.bg-gray-50.p-4 .text-3xl').textContent = `${data.level}%`;
+                const tons = (data.level / 100 * 800).toFixed(0); // Assuming 800 tons capacity
+                document.querySelector('.w-full.bg-gray-50.p-4 .text-sm').textContent = `Aproximadamente ${tons} toneladas`;
+
+                // Update Sensor Cards
+                document.querySelector('.sensor-temp').textContent = `${data.temp} °C`;
+                document.querySelector('.sensor-hum').textContent = `${data.humidity} %`;
+            }
+        });
+    </script>
     <script src="/scripts/dashboard.js"></script>
 </body>
 </html>
