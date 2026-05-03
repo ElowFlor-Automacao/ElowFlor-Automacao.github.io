@@ -79,10 +79,6 @@
                 </p>
             </div>
             <div class="flex gap-2">
-                <button class="bg-white border border-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition shadow-sm flex items-center gap-2">
-                    <i class="ph ph-export"></i>
-                    Exportar Relatório
-                </button>
                 <button onclick="updateSensors()" class="bg-brand-teal text-white px-4 py-2 rounded-lg font-medium hover:bg-brand-blue transition shadow-sm flex items-center gap-2">
                     <i class="ph ph-arrows-clockwise" id="refreshIcon"></i>
                     Atualizar
@@ -105,9 +101,12 @@
                 <div class="w-12 h-12 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center text-2xl">
                     <i class="ph ph-database"></i>
                 </div>
-                <div>
-                    <p class="text-sm text-gray-500 font-medium">Volume Total Armazenado</p>
-                    <p class="text-2xl font-bold text-gray-900">3.450 ton</p>
+                <div class="flex-1">
+                    <p class="text-sm text-gray-500 font-medium">Volume / Capacidade Total</p>
+                    <p class="text-2xl font-bold text-gray-900 flex items-baseline gap-1">2.418 <span class="text-lg text-gray-500 font-medium">/ 4.400 ton</span></p>
+                    <div class="w-full bg-gray-100 rounded-full h-1.5 mt-2 overflow-hidden">
+                        <div class="bg-brand-green h-1.5 rounded-full" style="width: 55%"></div>
+                    </div>
                 </div>
             </div>
             <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex items-center gap-4 border-l-4 border-l-red-500">
@@ -129,7 +128,10 @@
                 <div class="h-1.5 w-full bg-brand-teal"></div>
                 <div class="p-5 flex-grow flex flex-col items-center">
                     <h3 class="text-lg font-bold text-gray-800 mb-1">Silo 01</h3>
-                    <span class="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20 mb-6">Milho</span>
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">Milho</span>
+                        <span class="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/20">Cap.: 800t</span>
+                    </div>
                     
                     <!-- Desenho do Silo (Tanque) -->
                     <div class="relative w-28 h-48 bg-gray-100 border-4 border-gray-300 rounded-t-[3rem] rounded-b-lg mb-6 shadow-inner overflow-hidden">
@@ -171,7 +173,10 @@
                 <div class="h-1.5 w-full bg-brand-green"></div>
                 <div class="p-5 flex-grow flex flex-col items-center">
                     <h3 class="text-lg font-bold text-gray-800 mb-1">Silo 02</h3>
-                    <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-800 ring-1 ring-inset ring-green-600/20 mb-6">Soja</span>
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-800 ring-1 ring-inset ring-green-600/20">Soja</span>
+                        <span class="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/20">Cap.: 1.200t</span>
+                    </div>
                     
                     <div class="relative w-28 h-48 bg-gray-100 border-4 border-gray-300 rounded-t-[3rem] rounded-b-lg mb-6 shadow-inner overflow-hidden">
                         <div class="absolute inset-0 flex flex-col justify-between py-4 opacity-20 pointer-events-none z-10">
@@ -208,7 +213,10 @@
                 <div class="h-1.5 w-full bg-red-500 animate-pulse"></div>
                 <div class="p-5 flex-grow flex flex-col items-center bg-red-50/30">
                     <h3 class="text-lg font-bold text-gray-800 mb-1 flex items-center gap-2">Silo 03 <i class="ph-fill ph-warning text-red-500"></i></h3>
-                    <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-800 ring-1 ring-inset ring-green-600/20 mb-6">Soja</span>
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-800 ring-1 ring-inset ring-green-600/20">Soja</span>
+                        <span class="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/20">Cap.: 600t</span>
+                    </div>
                     
                     <div class="relative w-28 h-48 bg-gray-100 border-4 border-gray-300 rounded-t-[3rem] rounded-b-lg mb-6 shadow-inner overflow-hidden">
                         <div class="absolute inset-0 flex flex-col justify-between py-4 opacity-20 pointer-events-none z-10">
@@ -245,7 +253,10 @@
                 <div class="h-1.5 w-full bg-brand-blue"></div>
                 <div class="p-5 flex-grow flex flex-col items-center">
                     <h3 class="text-lg font-bold text-gray-800 mb-1">Silo 04</h3>
-                    <span class="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-800 ring-1 ring-inset ring-gray-500/20 mb-6">Trigo</span>
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-800 ring-1 ring-inset ring-gray-500/20">Trigo</span>
+                        <span class="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/20">Cap.: 1.000t</span>
+                    </div>
                     
                     <div class="relative w-28 h-48 bg-gray-100 border-4 border-gray-300 rounded-t-[3rem] rounded-b-lg mb-6 shadow-inner overflow-hidden">
                         <div class="absolute inset-0 flex flex-col justify-between py-4 opacity-20 pointer-events-none z-10">
@@ -278,11 +289,14 @@
             </div>
 
             <!-- Silo 05 -->
-            <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden relative flex flex-col">
-                <div class="h-1.5 w-full bg-brand-teal"></div>
+            <div class="bg-gray-50 rounded-2xl shadow-sm border border-gray-200 overflow-hidden relative flex flex-col opacity-75 grayscale transition-all">
+                <div class="h-1.5 w-full bg-gray-400"></div>
                 <div class="p-5 flex-grow flex flex-col items-center">
-                    <h3 class="text-lg font-bold text-gray-800 mb-1">Silo 05</h3>
-                    <span class="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20 mb-6">Milho</span>
+                    <h3 class="text-lg font-bold text-gray-500 mb-1 flex items-center gap-2"><i class="ph ph-wifi-slash"></i> Silo 05</h3>
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="inline-flex items-center rounded-full bg-gray-200 px-2 py-1 text-xs font-medium text-gray-600">Milho</span>
+                        <span class="inline-flex items-center rounded-full bg-gray-200 px-2 py-1 text-xs font-medium text-gray-500 ring-1 ring-inset ring-gray-400/20">Cap.: 800t</span>
+                    </div>
                     
                     <div class="relative w-28 h-48 bg-gray-100 border-4 border-gray-300 rounded-t-[3rem] rounded-b-lg mb-6 shadow-inner overflow-hidden">
                         <div class="absolute inset-0 flex flex-col justify-between py-4 opacity-20 pointer-events-none z-10">
@@ -290,26 +304,26 @@
                             <div class="border-b-2 border-gray-600 w-full"></div>
                             <div class="border-b-2 border-gray-600 w-full"></div>
                         </div>
-                        <div class="absolute bottom-0 w-full bg-brand-teal liquid-fill h-0 z-0" data-target="82"></div>
+                        <div class="absolute bottom-0 w-full bg-gray-400 liquid-fill h-0 z-0" data-target="82"></div>
                         <div class="absolute inset-0 flex items-center justify-center z-20">
-                            <span class="text-xl font-bold text-white drop-shadow-md bg-black/20 px-2 py-1 rounded">82%</span>
+                            <span class="text-xl font-bold text-white drop-shadow-md bg-black/20 px-2 py-1 rounded">--%</span>
                         </div>
                     </div>
 
                     <div class="w-full space-y-3 mt-auto">
                         <div class="flex justify-between items-center text-sm">
                             <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-thermometer text-brand-blue"></i> Temp.</span>
-                            <span class="font-semibold text-gray-800 sensor-temp">23.8 °C</span>
+                            <span class="font-semibold text-gray-500 sensor-temp">-- °C</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-drop text-brand-blue"></i> Umidade</span>
-                            <span class="font-semibold text-gray-800 sensor-hum">12.4 %</span>
+                            <span class="font-semibold text-gray-500 sensor-hum">-- %</span>
                         </div>
                         <div class="flex justify-between items-center text-sm border-t border-gray-100 pt-2">
                             <span class="text-gray-500 text-xs">Status</span>
-                            <span class="text-green-600 text-xs font-bold flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-green-500"></div> Online</span>
+                            <span class="text-gray-500 text-xs font-bold flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-gray-400"></div> Offline</span>
                         </div>
-                    <a href="/pages/silo-details.html?id=5" class="mt-4 block w-full text-center bg-brand-teal/10 hover:bg-brand-teal text-brand-teal hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
+                    <a href="/pages/silo-details.html?id=5" class="mt-4 block w-full text-center bg-gray-200 hover:bg-gray-300 text-gray-600 font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
                     </div>
                 </div>
             </div>

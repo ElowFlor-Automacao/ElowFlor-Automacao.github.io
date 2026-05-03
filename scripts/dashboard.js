@@ -28,15 +28,19 @@ function updateSensors() {
         temps.forEach(temp => {
             // Simula uma pequena variação térmica
             const current = parseFloat(temp.innerText);
-            const variation = (Math.random() * 0.4 - 0.2); 
-            temp.innerText = (current + variation).toFixed(1) + ' °C';
+            if (!isNaN(current)) {
+                const variation = (Math.random() * 0.4 - 0.2); 
+                temp.innerText = (current + variation).toFixed(1) + ' °C';
+            }
         });
 
         hums.forEach(hum => {
             // Simula uma pequena variação na umidade
             const current = parseFloat(hum.innerText);
-            const variation = (Math.random() * 0.2 - 0.1); 
-            hum.innerText = (current + variation).toFixed(1) + ' %';
+            if (!isNaN(current)) {
+                const variation = (Math.random() * 0.2 - 0.1); 
+                hum.innerText = (current + variation).toFixed(1) + ' %';
+            }
         });
 
         updateTime();
