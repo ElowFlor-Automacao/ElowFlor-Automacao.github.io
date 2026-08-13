@@ -1,7 +1,12 @@
-// Função para formatar o horário
+/* Simulação de dados do painel (demonstração).
+   Usado por dashboard.html e silo-details.html — por isso todo acesso ao DOM
+   é defensivo: as duas páginas não têm exatamente os mesmos elementos. */
+
+// Atualiza o carimbo de hora, se a página tiver um
 function updateTime() {
-    const now = new Date();
-    document.getElementById('lastUpdated').innerText = now.toLocaleTimeString('pt-BR');
+    const el = document.getElementById('lastUpdated');
+    if (!el) return;
+    el.textContent = new Date().toLocaleTimeString('pt-BR');
 }
 
 // Anima o enchimento dos silos no carregamento
@@ -9,8 +14,7 @@ window.addEventListener('load', () => {
     const fills = document.querySelectorAll('.liquid-fill');
     setTimeout(() => {
         fills.forEach(fill => {
-            const target = fill.getAttribute('data-target');
-            fill.style.height = `${target}%`;
+            fill.style.height = `${fill.getAttribute('data-target')}%`;
         });
     }, 100);
     updateTime();
@@ -19,34 +23,38 @@ window.addEventListener('load', () => {
 // Simula atualização de dados em tempo real
 function updateSensors() {
     const icon = document.getElementById('refreshIcon');
-    icon.classList.add('animate-spin');
-    
+    if (icon) icon.classList.add('animate-spin');
+
     setTimeout(() => {
-        const temps = document.querySelectorAll('.sensor-temp');
-        const hums = document.querySelectorAll('.sensor-hum');
+        // O spinner precisa parar mesmo se algo abaixo falhar
+        try {
+            // Pequena variação em torno do valor atual
+            const jitter = (el, amplitude, sufixo) => {
+                const atual = parseFloat(el.textContent);
+                if (Number.isNaN(atual)) return; // sensor offline mostra "--"
+                const variacao = Math.random() * amplitude - amplitude / 2;
+                el.textContent = (atual + variacao).toFixed(1) + sufixo;
+            };
 
-        temps.forEach(temp => {
-            // Simula uma pequena variação térmica
-            const current = parseFloat(temp.innerText);
-            if (!isNaN(current)) {
-                const variation = (Math.random() * 0.4 - 0.2); 
-                temp.innerText = (current + variation).toFixed(1) + ' °C';
-            }
-        });
+            document.querySelectorAll('.sensor-temp').forEach(el => jitter(el, 0.4, ' °C'));
+            document.querySelectorAll('.sensor-hum').forEach(el => jitter(el, 0.2, ' %'));
 
-        hums.forEach(hum => {
-            // Simula uma pequena variação na umidade
-            const current = parseFloat(hum.innerText);
-            if (!isNaN(current)) {
-                const variation = (Math.random() * 0.2 - 0.1); 
-                hum.innerText = (current + variation).toFixed(1) + ' %';
-            }
-        });
-
-        updateTime();
-        icon.classList.remove('animate-spin');
-    }, 800); // delay simulado da requisição API
+            updateTime();
+        } finally {
+            if (icon) icon.classList.remove('animate-spin');
+        }
+    }, 800); // delay simulado da requisição à API
 }
 
-// Auto-atualização a cada 10 segundos para demonstrar funcionamento
-setInterval(updateSensors, 10000);
+// Auto-atualização a cada 10 segundos para demonstrar funcionamento.
+// Pausa quando a aba está em segundo plano.
+let autoRefresh = setInterval(updateSensors, 10000);
+
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        clearInterval(autoRefresh);
+        autoRefresh = null;
+    } else if (!autoRefresh) {
+        autoRefresh = setInterval(updateSensors, 10000);
+    }
+});

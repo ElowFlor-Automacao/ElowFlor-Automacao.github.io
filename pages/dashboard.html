@@ -4,27 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Monitoramento ElowFlor</title>
+    <meta name="description" content="Painel de monitoramento de silos ElowFlor.">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#236D75">
+
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+    <link rel="apple-touch-icon" href="/assets/favicon-192.png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Estilos Globais -->
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/styles.css?v=3">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     },
                     colors: {
                         brand: {
                             teal: '#236D75',
+                            'teal-deep': '#1A5258',
                             green: '#4D8329',
                             blue: '#1B6790',
                         }
@@ -39,18 +48,21 @@
     <!-- Navegação Superior (Estilo Sistema) -->
     <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+            <div class="flex justify-between items-center h-[68px]">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="/pages/dashboard.html" class="flex items-center gap-2">
-                        <img src="/assets/icon.png" alt="Ícone ElowFlor" class="h-10 w-auto">
-                        <img src="/assets/escrita.png" alt="Logo ElowFlor" class="h-16 w-auto">
+                    <a href="/pages/dashboard.html" class="flex items-center gap-2.5" aria-label="ElowFlor — painel">
+                        <img src="/assets/logo-mark.png" alt="" width="128" height="128" class="h-8 w-8">
+                        <img src="/assets/logo-wordmark.png" alt="ElowFlor" width="365" height="96" class="h-[22px] w-auto">
                     </a>
-                    <span class="text-gray-400 font-normal text-sm ml-4 hidden sm:inline">| Painel do Cliente</span>
+                    <span class="text-gray-500 font-normal text-sm ml-4 pl-4 border-l border-gray-200 hidden sm:inline">Painel do Cliente</span>
                 </div>
 
                 <!-- Perfil do Usuário e Notificações -->
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center gap-4">
+                    <a href="/" class="hidden sm:flex items-center gap-1.5 text-sm text-gray-500 hover:text-brand-teal transition-colors">
+                        <i class="ph ph-arrow-left" aria-hidden="true"></i> Voltar ao site
+                    </a>
                     <div class="h-8 w-px bg-gray-200"></div>
                     <div class="flex items-center gap-3 cursor-pointer group">
                         <div class="text-right hidden sm:block">
@@ -79,7 +91,7 @@
                 </p>
             </div>
             <div class="flex gap-2">
-                <button onclick="updateSensors()" class="bg-brand-teal text-white px-4 py-2 rounded-lg font-medium hover:bg-brand-blue transition shadow-sm flex items-center gap-2">
+                <button onclick="updateSensors()" class="bg-brand-teal text-white px-4 py-2 rounded-lg font-semibold hover:bg-brand-teal-deep transition shadow-sm flex items-center gap-2">
                     <i class="ph ph-arrows-clockwise" id="refreshIcon"></i>
                     Atualizar
                 </button>
@@ -88,7 +100,7 @@
 
         <!-- Cards de Resumo Global -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex items-center gap-4 border-l-4 border-l-brand-teal">
+            <div class="bg-white rounded-xl shadow-sm ring-1 ring-gray-200 p-6 flex items-center gap-4 border-l-4 border-l-brand-teal">
                 <div class="w-12 h-12 rounded-full bg-brand-teal/10 text-brand-teal flex items-center justify-center text-2xl">
                     <i class="ph ph-barn"></i>
                 </div>
@@ -97,19 +109,19 @@
                     <p class="text-2xl font-bold text-gray-900">5</p>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex items-center gap-4 border-l-4 border-l-brand-green">
-                <div class="w-12 h-12 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center text-2xl">
+            <div class="bg-white rounded-xl shadow-sm ring-1 ring-gray-200 p-6 flex items-center gap-4 border-l-4 border-l-brand-teal">
+                <div class="w-12 h-12 rounded-full bg-brand-teal/10 text-brand-teal flex items-center justify-center text-2xl">
                     <i class="ph ph-database"></i>
                 </div>
                 <div class="flex-1">
                     <p class="text-sm text-gray-500 font-medium">Volume / Capacidade Total</p>
                     <p class="text-2xl font-bold text-gray-900 flex items-baseline gap-1">2.418 <span class="text-lg text-gray-500 font-medium">/ 4.400 ton</span></p>
                     <div class="w-full bg-gray-100 rounded-full h-1.5 mt-2 overflow-hidden">
-                        <div class="bg-brand-green h-1.5 rounded-full" style="width: 55%"></div>
+                        <div class="bg-brand-teal h-1.5 rounded-full" style="width: 55%"></div>
                     </div>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex items-center gap-4 border-l-4 border-l-red-500">
+            <div class="bg-white rounded-xl shadow-sm ring-1 ring-gray-200 p-6 flex items-center gap-4 border-l-4 border-l-red-500">
                 <div class="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-2xl">
                     <i class="ph ph-warning-circle"></i>
                 </div>
@@ -120,11 +132,20 @@
             </div>
         </div>
 
+        <!-- Legenda do código de cores -->
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 mb-4 text-xs text-gray-500">
+            <span class="font-medium text-gray-600">Nível:</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-brand-teal"></span> Normal</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-amber-500"></span> Atenção (85–94%)</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-red-500"></span> Crítico (≥95% ou temp. alta)</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-gray-400"></span> Sem sinal</span>
+        </div>
+
         <!-- Grid de Silos (Monitoramento Individual) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             
             <!-- Silo 01 -->
-            <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden relative flex flex-col">
+            <div class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200 hover:shadow-md transition-shadow overflow-hidden relative flex flex-col">
                 <div class="h-1.5 w-full bg-brand-teal"></div>
                 <div class="p-5 flex-grow flex flex-col items-center">
                     <h3 class="text-lg font-bold text-gray-800 mb-1">Silo 01</h3>
@@ -152,12 +173,12 @@
                     <!-- Dados dos Sensores -->
                     <div class="w-full space-y-3 mt-auto">
                         <div class="flex justify-between items-center text-sm">
-                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-thermometer text-brand-blue"></i> Temp.</span>
-                            <span class="font-semibold text-gray-800 sensor-temp">24.5 °C</span>
+                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-thermometer text-gray-400" aria-hidden="true"></i> Temp.</span>
+                            <span class="font-semibold text-gray-800 sensor-temp tabular">24.5 °C</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
-                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-drop text-brand-blue"></i> Umidade</span>
-                            <span class="font-semibold text-gray-800 sensor-hum">13.2 %</span>
+                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-drop text-gray-400" aria-hidden="true"></i> Umidade</span>
+                            <span class="font-semibold text-gray-800 sensor-hum tabular">13.2 %</span>
                         </div>
                         <div class="flex justify-between items-center text-sm border-t border-gray-100 pt-2">
                             <span class="text-gray-500 text-xs">Status</span>
@@ -169,8 +190,8 @@
             </div>
 
             <!-- Silo 02 -->
-            <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden relative flex flex-col">
-                <div class="h-1.5 w-full bg-brand-green"></div>
+            <div class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200 hover:shadow-md transition-shadow overflow-hidden relative flex flex-col">
+                <div class="h-1.5 w-full bg-brand-teal"></div>
                 <div class="p-5 flex-grow flex flex-col items-center">
                     <h3 class="text-lg font-bold text-gray-800 mb-1">Silo 02</h3>
                     <div class="flex items-center gap-2 mb-6">
@@ -184,7 +205,7 @@
                             <div class="border-b-2 border-gray-600 w-full"></div>
                             <div class="border-b-2 border-gray-600 w-full"></div>
                         </div>
-                        <div class="absolute bottom-0 w-full bg-brand-green liquid-fill h-0 z-0" data-target="42"></div>
+                        <div class="absolute bottom-0 w-full bg-brand-teal liquid-fill h-0 z-0" data-target="42"></div>
                         <div class="absolute inset-0 flex items-center justify-center z-20">
                             <span class="text-xl font-bold text-white drop-shadow-md bg-black/20 px-2 py-1 rounded">42%</span>
                         </div>
@@ -192,18 +213,18 @@
 
                     <div class="w-full space-y-3 mt-auto">
                         <div class="flex justify-between items-center text-sm">
-                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-thermometer text-brand-blue"></i> Temp.</span>
-                            <span class="font-semibold text-gray-800 sensor-temp">22.1 °C</span>
+                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-thermometer text-gray-400" aria-hidden="true"></i> Temp.</span>
+                            <span class="font-semibold text-gray-800 sensor-temp tabular">22.1 °C</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
-                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-drop text-brand-blue"></i> Umidade</span>
-                            <span class="font-semibold text-gray-800 sensor-hum">11.8 %</span>
+                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-drop text-gray-400" aria-hidden="true"></i> Umidade</span>
+                            <span class="font-semibold text-gray-800 sensor-hum tabular">11.8 %</span>
                         </div>
                         <div class="flex justify-between items-center text-sm border-t border-gray-100 pt-2">
                             <span class="text-gray-500 text-xs">Status</span>
                             <span class="text-green-600 text-xs font-bold flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-green-500"></div> Online</span>
                         </div>
-                    <a href="/pages/silo-details.html?id=2" class="mt-4 block w-full text-center bg-brand-green/10 hover:bg-brand-green text-brand-green hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
+                    <a href="/pages/silo-details.html?id=2" class="mt-4 block w-full text-center bg-brand-teal/10 hover:bg-brand-teal text-brand-teal hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
                     </div>
                 </div>
             </div>
@@ -232,12 +253,12 @@
 
                     <div class="w-full space-y-3 mt-auto">
                         <div class="flex justify-between items-center text-sm">
-                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-thermometer text-brand-blue"></i> Temp.</span>
-                            <span class="font-semibold text-red-600 sensor-temp">28.4 °C</span>
+                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-thermometer text-gray-400" aria-hidden="true"></i> Temp.</span>
+                            <span class="font-semibold text-red-600 sensor-temp tabular">28.4 °C</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
-                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-drop text-brand-blue"></i> Umidade</span>
-                            <span class="font-semibold text-gray-800 sensor-hum">14.1 %</span>
+                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-drop text-gray-400" aria-hidden="true"></i> Umidade</span>
+                            <span class="font-semibold text-gray-800 sensor-hum tabular">14.1 %</span>
                         </div>
                         <div class="flex justify-between items-center text-sm border-t border-gray-100 pt-2">
                             <span class="text-gray-500 text-xs">Status</span>
@@ -249,8 +270,8 @@
             </div>
 
             <!-- Silo 04 -->
-            <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden relative flex flex-col">
-                <div class="h-1.5 w-full bg-brand-blue"></div>
+            <div class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200 hover:shadow-md transition-shadow overflow-hidden relative flex flex-col">
+                <div class="h-1.5 w-full bg-brand-teal"></div>
                 <div class="p-5 flex-grow flex flex-col items-center">
                     <h3 class="text-lg font-bold text-gray-800 mb-1">Silo 04</h3>
                     <div class="flex items-center gap-2 mb-6">
@@ -264,7 +285,7 @@
                             <div class="border-b-2 border-gray-600 w-full"></div>
                             <div class="border-b-2 border-gray-600 w-full"></div>
                         </div>
-                        <div class="absolute bottom-0 w-full bg-brand-blue liquid-fill h-0 z-0" data-target="15"></div>
+                        <div class="absolute bottom-0 w-full bg-brand-teal liquid-fill h-0 z-0" data-target="15"></div>
                         <div class="absolute inset-0 flex items-center justify-center z-20">
                             <span class="text-xl font-bold text-white drop-shadow-md bg-black/20 px-2 py-1 rounded">15%</span>
                         </div>
@@ -272,18 +293,18 @@
 
                     <div class="w-full space-y-3 mt-auto">
                         <div class="flex justify-between items-center text-sm">
-                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-thermometer text-brand-blue"></i> Temp.</span>
-                            <span class="font-semibold text-gray-800 sensor-temp">20.5 °C</span>
+                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-thermometer text-gray-400" aria-hidden="true"></i> Temp.</span>
+                            <span class="font-semibold text-gray-800 sensor-temp tabular">20.5 °C</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
-                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-drop text-brand-blue"></i> Umidade</span>
-                            <span class="font-semibold text-gray-800 sensor-hum">10.5 %</span>
+                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-drop text-gray-400" aria-hidden="true"></i> Umidade</span>
+                            <span class="font-semibold text-gray-800 sensor-hum tabular">10.5 %</span>
                         </div>
                         <div class="flex justify-between items-center text-sm border-t border-gray-100 pt-2">
                             <span class="text-gray-500 text-xs">Status</span>
                             <span class="text-green-600 text-xs font-bold flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-green-500"></div> Online</span>
                         </div>
-                    <a href="/pages/silo-details.html?id=4" class="mt-4 block w-full text-center bg-brand-blue/10 hover:bg-brand-blue text-brand-blue hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
+                    <a href="/pages/silo-details.html?id=4" class="mt-4 block w-full text-center bg-brand-teal/10 hover:bg-brand-teal text-brand-teal hover:text-white font-medium py-2 rounded-lg transition-colors text-sm">Ver Detalhes</a>
                     </div>
                 </div>
             </div>
@@ -312,12 +333,12 @@
 
                     <div class="w-full space-y-3 mt-auto">
                         <div class="flex justify-between items-center text-sm">
-                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-thermometer text-brand-blue"></i> Temp.</span>
-                            <span class="font-semibold text-gray-500 sensor-temp">-- °C</span>
+                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-thermometer text-gray-400" aria-hidden="true"></i> Temp.</span>
+                            <span class="font-semibold text-gray-500 sensor-temp tabular">-- °C</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
-                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-drop text-brand-blue"></i> Umidade</span>
-                            <span class="font-semibold text-gray-500 sensor-hum">-- %</span>
+                            <span class="flex items-center gap-1 text-gray-500"><i class="ph ph-drop text-gray-400" aria-hidden="true"></i> Umidade</span>
+                            <span class="font-semibold text-gray-500 sensor-hum tabular">-- %</span>
                         </div>
                         <div class="flex justify-between items-center text-sm border-t border-gray-100 pt-2">
                             <span class="text-gray-500 text-xs">Status</span>
@@ -332,6 +353,6 @@
     </main>
 
     <!-- Scripts de Simulação -->
-    <script src="/scripts/dashboard.js"></script>
+    <script src="/scripts/dashboard.js?v=2"></script>
 </body>
 </html>

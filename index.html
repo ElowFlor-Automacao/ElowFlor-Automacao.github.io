@@ -3,28 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElowFlor | Soluções Agrícolas</title>
+    <title>ElowFlor | Monitoramento Inteligente para o Agronegócio</title>
+
+    <!-- SEO / compartilhamento -->
+    <meta name="description" content="Monitoramento de nível de silos e irrigação em tempo real. Sensores, telemetria LoRa e dashboard na nuvem para o agronegócio.">
+    <meta name="theme-color" content="#236D75">
+    <link rel="canonical" href="https://elowflor-automacao.github.io/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ElowFlor">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="ElowFlor | Monitoramento Inteligente para o Agronegócio">
+    <meta property="og:description" content="Monitoramento de nível de silos e irrigação em tempo real. Sensores, telemetria LoRa e dashboard na nuvem.">
+    <meta property="og:url" content="https://elowflor-automacao.github.io/">
+    <meta property="og:image" content="https://elowflor-automacao.github.io/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+    <link rel="apple-touch-icon" href="/assets/favicon-192.png">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Estilos Globais -->
-    <link rel="stylesheet" href="/styles/styles.css">
-    
+    <link rel="stylesheet" href="/styles/styles.css?v=3">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     },
                     colors: {
                         brand: {
                             teal: '#236D75',
+                            'teal-deep': '#1A5258',
                             green: '#4D8329',
                             blue: '#1B6790',
                         }
@@ -34,148 +57,175 @@
         }
     </script>
 </head>
-<body class="font-sans text-gray-800 bg-white">
+<body class="font-sans text-gray-700 bg-white antialiased">
+
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
 
     <!-- Cabeçalho / Navegação -->
-    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all border-b border-gray-100">
+    <header class="bg-white/85 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
+            <div class="flex justify-between items-center h-[68px]">
                 <!-- Logo -->
-                <a href="#" class="flex items-center gap-3">
-                    <img src="/assets/icon.png" alt="Ícone ElowFlor" class="h-12 w-auto">
-                    <img src="/assets/escrita.png" alt="Logo ElowFlor" class="h-20 w-auto">
+                <a href="/" class="flex items-center gap-2.5 shrink-0" aria-label="ElowFlor — página inicial">
+                    <img src="/assets/logo-mark.png" alt="" width="128" height="128" class="h-8 w-8">
+                    <img src="/assets/logo-wordmark.png" alt="ElowFlor" width="365" height="96" class="h-[22px] w-auto">
                 </a>
 
                 <!-- Links de Navegação (Desktop) -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#solucoes" class="text-gray-600 hover:text-brand-teal font-medium transition-colors">Nossas Soluções</a>
-                    <a href="#catalogos" class="text-gray-600 hover:text-brand-teal font-medium transition-colors">Catálogos</a>
-                    <div class="flex items-center space-x-4 ml-4">
-                        <a href="login.html" class="flex items-center gap-2 text-brand-blue border-2 border-brand-blue hover:bg-brand-blue hover:text-white px-5 py-2 rounded-xl font-semibold transition-colors">
-                            <i class="ph ph-sign-in text-lg"></i>
+                <nav class="hidden md:flex items-center gap-8" aria-label="Navegação principal">
+                    <a href="#solucoes" class="text-sm text-gray-600 hover:text-brand-teal font-medium transition-colors">Nossas Soluções</a>
+                    <a href="#demonstracao" class="text-sm text-gray-600 hover:text-brand-teal font-medium transition-colors">Demonstração</a>
+                    <div class="flex items-center gap-3 ml-1">
+                        <a href="/pages/login.html" class="flex items-center gap-2 text-sm text-brand-blue border border-brand-blue/40 hover:border-brand-blue hover:bg-brand-blue hover:text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+                            <i class="ph ph-sign-in text-base" aria-hidden="true"></i>
                             Acesso Cliente
                         </a>
-                        <a href="#contato" class="bg-brand-green hover:bg-brand-teal text-white px-5 py-2 rounded-xl font-semibold transition-colors shadow-sm">
+                        <a href="#contato" class="bg-brand-green hover:bg-brand-teal text-white text-sm px-4 py-2 rounded-lg font-semibold transition-colors">
                             Solicitar Orçamento
                         </a>
                     </div>
                 </nav>
 
                 <!-- Botão Menu Mobile -->
-                <div class="md:hidden flex items-center">
-                    <button class="text-gray-600 hover:text-brand-teal focus:outline-none p-2">
-                        <i class="ph ph-list text-3xl"></i>
-                    </button>
-                </div>
+                <button id="menuToggle" type="button"
+                    class="md:hidden text-gray-600 hover:text-brand-teal p-2 -mr-2 rounded-lg"
+                    aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <i class="ph ph-list text-2xl" id="menuIcon" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
+
+        <!-- Menu Mobile -->
+        <nav id="mobileMenu" class="md:hidden hidden border-t border-gray-200 bg-white" aria-label="Navegação principal (mobile)">
+            <div class="px-4 py-4 space-y-1">
+                <a href="#solucoes" class="block px-3 py-3 rounded-lg text-gray-700 font-medium hover:bg-gray-50 hover:text-brand-teal transition-colors">Nossas Soluções</a>
+                <a href="#demonstracao" class="block px-3 py-3 rounded-lg text-gray-700 font-medium hover:bg-gray-50 hover:text-brand-teal transition-colors">Demonstração</a>
+                <div class="pt-3 mt-2 border-t border-gray-100 space-y-2">
+                    <a href="/pages/login.html" class="flex items-center justify-center gap-2 text-brand-blue border border-brand-blue/40 px-4 py-3 rounded-lg font-semibold">
+                        <i class="ph ph-sign-in text-lg" aria-hidden="true"></i>
+                        Acesso Cliente
+                    </a>
+                    <a href="#contato" class="block text-center bg-brand-green text-white px-4 py-3 rounded-lg font-semibold">
+                        Solicitar Orçamento
+                    </a>
+                </div>
+            </div>
+        </nav>
     </header>
 
+    <main id="conteudo">
+
     <!-- Hero Section (Carrossel) -->
-    <section class="relative bg-brand-teal text-white py-24 sm:py-32 overflow-hidden">
-        <div class="absolute inset-0 bg-black/10"></div> <!-- Overlay suave -->
-        
+    <section class="relative hero-gradient hero-texture text-white overflow-hidden" aria-roledescription="carrossel" aria-label="Destaques">
+
         <!-- Setas de Navegação (Ocultas em telas muito pequenas) -->
-        <button id="prevSlide" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 hidden sm:flex items-center justify-center rounded-full bg-black/20 hover:bg-black/40 text-white transition-colors focus:outline-none">
-            <i class="ph ph-caret-left text-3xl"></i>
+        <button id="prevSlide" type="button" aria-label="Slide anterior"
+            class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 hidden sm:flex items-center justify-center rounded-full bg-black/15 hover:bg-black/35 text-white transition-colors">
+            <i class="ph ph-caret-left text-3xl" aria-hidden="true"></i>
         </button>
-        <button id="nextSlide" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 hidden sm:flex items-center justify-center rounded-full bg-black/20 hover:bg-black/40 text-white transition-colors focus:outline-none">
-            <i class="ph ph-caret-right text-3xl"></i>
+        <button id="nextSlide" type="button" aria-label="Próximo slide"
+            class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 hidden sm:flex items-center justify-center rounded-full bg-black/15 hover:bg-black/35 text-white transition-colors">
+            <i class="ph ph-caret-right text-3xl" aria-hidden="true"></i>
         </button>
 
         <!-- Container dos Slides -->
         <div id="carouselTrack" class="relative z-10 flex transition-transform duration-500 ease-in-out w-full">
-            
+
             <!-- Slide 1: Silos -->
-            <div class="w-full flex-shrink-0">
+            <div class="w-full flex-shrink-0 min-h-[560px] sm:min-h-[600px] flex items-center py-24 sm:py-28" role="group" aria-roledescription="slide" aria-label="1 de 3">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm mb-6 text-white shadow-lg">
-                        <i class="ph ph-barn text-5xl"></i>
+                    <div class="inline-flex items-center justify-center w-[72px] h-[72px] rounded-2xl bg-white/15 ring-1 ring-white/20 backdrop-blur-sm mb-7 text-white">
+                        <i class="ph ph-barn text-4xl" aria-hidden="true"></i>
                     </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-balance">
                         Monitoramento Inteligente de Silos
                     </h1>
-                    <p class="mt-4 text-lg sm:text-xl text-teal-50 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+                    <p class="text-lg sm:text-xl text-teal-50/90 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
                         Tenha o controle total do nível de armazenamento dos seus grãos na palma da mão. Soluções robustas com tecnologia LoRa, MQTT e microcontroladores dedicados para o agronegócio.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center gap-4">
-                        <a href="#solucoes" class="inline-flex justify-center items-center gap-2 bg-brand-green hover:bg-white hover:text-brand-green text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        <a href="#solucoes" class="inline-flex justify-center items-center gap-2 bg-brand-green hover:bg-white hover:text-brand-green text-white px-7 py-3.5 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl">
                             Conheça o Sistema
-                            <i class="ph ph-arrow-right text-xl"></i>
+                            <i class="ph ph-arrow-right text-xl" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- Slide 2: Irrigação -->
-            <div class="w-full flex-shrink-0">
+            <div class="w-full flex-shrink-0 min-h-[560px] sm:min-h-[600px] flex items-center py-24 sm:py-28" role="group" aria-roledescription="slide" aria-label="2 de 3">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm mb-6 text-white shadow-lg">
-                        <i class="ph ph-drop text-5xl"></i>
+                    <div class="inline-flex items-center justify-center w-[72px] h-[72px] rounded-2xl bg-white/15 ring-1 ring-white/20 backdrop-blur-sm mb-7 text-white">
+                        <i class="ph ph-drop text-4xl" aria-hidden="true"></i>
                     </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-balance">
                         Monitoramento de Irrigação
-                    </h1>
-                    <p class="mt-4 text-lg sm:text-xl text-teal-50 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+                    </h2>
+                    <p class="text-lg sm:text-xl text-teal-50/90 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
                         Otimize o uso da água e garanta a produtividade da sua lavoura. Acompanhe a umidade do solo e o clima em tempo real para tomadas de decisão precisas e eficientes.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center gap-4">
-                        <a href="#contato" class="inline-flex justify-center items-center gap-2 bg-brand-green hover:bg-white hover:text-brand-green text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        <a href="#contato" class="inline-flex justify-center items-center gap-2 bg-brand-green hover:bg-white hover:text-brand-green text-white px-7 py-3.5 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl">
                             Fale com um Especialista
-                            <i class="ph ph-arrow-right text-xl"></i>
+                            <i class="ph ph-arrow-right text-xl" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- Slide 3: Sob Medida -->
-            <div class="w-full flex-shrink-0">
+            <div class="w-full flex-shrink-0 min-h-[560px] sm:min-h-[600px] flex items-center py-24 sm:py-28" role="group" aria-roledescription="slide" aria-label="3 de 3">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm mb-6 text-white shadow-lg">
-                        <i class="ph ph-cpu text-5xl"></i>
+                    <div class="inline-flex items-center justify-center w-[72px] h-[72px] rounded-2xl bg-white/15 ring-1 ring-white/20 backdrop-blur-sm mb-7 text-white">
+                        <i class="ph ph-cpu text-4xl" aria-hidden="true"></i>
                     </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-balance">
                         Soluções Tecnológicas Sob Medida
-                    </h1>
-                    <p class="mt-4 text-lg sm:text-xl text-teal-50 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+                    </h2>
+                    <p class="text-lg sm:text-xl text-teal-50/90 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
                         Desenvolvemos projetos de hardware e software exclusivos para as necessidades específicas da sua operação agrícola. Da concepção do circuito integrado ao dashboard na nuvem.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center gap-4">
-                        <a href="#contato" class="inline-flex justify-center items-center gap-2 bg-brand-green hover:bg-white hover:text-brand-green text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        <a href="#contato" class="inline-flex justify-center items-center gap-2 bg-brand-green hover:bg-white hover:text-brand-green text-white px-7 py-3.5 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl">
                             Solicite um Projeto
-                            <i class="ph ph-arrow-right text-xl"></i>
+                            <i class="ph ph-arrow-right text-xl" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Indicadores (Pontos inferiores) -->
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-            <button class="w-3 h-3 rounded-full bg-white transition-opacity carousel-dot focus:outline-none" data-index="0"></button>
-            <button class="w-3 h-3 rounded-full bg-white/40 hover:bg-white/70 transition-opacity carousel-dot focus:outline-none" data-index="1"></button>
-            <button class="w-3 h-3 rounded-full bg-white/40 hover:bg-white/70 transition-opacity carousel-dot focus:outline-none" data-index="2"></button>
+        <!-- Indicadores (alvo de toque de 44px, ponto visual de 10px) -->
+        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex z-20" role="tablist" aria-label="Selecionar slide">
+            <button type="button" class="carousel-dot group w-11 h-11 flex items-center justify-center" data-index="0" role="tab" aria-label="Slide 1" aria-selected="true">
+                <span class="dot"></span>
+            </button>
+            <button type="button" class="carousel-dot group w-11 h-11 flex items-center justify-center" data-index="1" role="tab" aria-label="Slide 2" aria-selected="false">
+                <span class="dot"></span>
+            </button>
+            <button type="button" class="carousel-dot group w-11 h-11 flex items-center justify-center" data-index="2" role="tab" aria-label="Slide 3" aria-selected="false">
+                <span class="dot"></span>
+            </button>
         </div>
     </section>
 
     <!-- Nossas Soluções Section -->
-    <section id="solucoes" class="py-20 bg-gray-50">
+    <section id="solucoes" class="py-20 sm:py-24 bg-gray-50 border-y border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-brand-blue text-sm font-bold tracking-wider uppercase mb-2">Tecnologia Aplicada</h2>
-                <h3 class="text-3xl font-bold text-gray-900 sm:text-4xl">Nossos Sistemas de Monitoramento</h3>
+            <div class="text-center mb-14">
+                <p class="text-brand-blue text-xs font-bold tracking-[0.14em] uppercase mb-3">Tecnologia Aplicada</p>
+                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl tracking-tight">Nossos Sistemas de Monitoramento</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                 <!-- Card 1 -->
-                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative group">
-                    <!-- Linha superior colorida igual ao login -->
-                    <div class="h-2 w-full bg-brand-teal"></div>
+                <div class="bg-white rounded-2xl ring-1 ring-gray-200 shadow-sm hover:shadow-md hover:ring-brand-teal/30 transition-all duration-300 overflow-hidden group">
+                    <div class="h-1.5 w-full bg-brand-teal"></div>
                     <div class="p-8 sm:p-10">
-                        <div class="w-16 h-16 rounded-2xl bg-brand-teal/10 text-brand-teal flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="ph ph-wifi-high"></i>
+                        <div class="w-14 h-14 rounded-xl bg-brand-teal/10 text-brand-teal flex items-center justify-center text-2xl mb-6 group-hover:scale-105 transition-transform">
+                            <i class="ph ph-wifi-high" aria-hidden="true"></i>
                         </div>
-                        <h4 class="text-2xl font-bold text-gray-900 mb-4">Aplicação Local (Rede Wi-Fi)</h4>
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4 tracking-tight">Aplicação Local (Rede Wi-Fi)</h3>
                         <p class="text-gray-600 leading-relaxed">
                             Ideal para propriedades com infraestrutura de rede própria. O sistema transmite os dados dos sensores diretamente para a interface web acessível via Wi-Fi interno, sem depender de internet externa. Alta segurança e resposta em tempo real.
                         </p>
@@ -183,13 +233,13 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative group">
-                    <div class="h-2 w-full bg-brand-teal"></div>
+                <div class="bg-white rounded-2xl ring-1 ring-gray-200 shadow-sm hover:shadow-md hover:ring-brand-blue/30 transition-all duration-300 overflow-hidden group">
+                    <div class="h-1.5 w-full bg-brand-blue"></div>
                     <div class="p-8 sm:p-10">
-                        <div class="w-16 h-16 rounded-2xl bg-brand-blue/10 text-brand-blue flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="ph ph-cloud"></i>
+                        <div class="w-14 h-14 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center text-2xl mb-6 group-hover:scale-105 transition-transform">
+                            <i class="ph ph-cloud" aria-hidden="true"></i>
                         </div>
-                        <h4 class="text-2xl font-bold text-gray-900 mb-4">Aplicação em Nuvem (Acesso Web)</h4>
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4 tracking-tight">Aplicação em Nuvem (Acesso Web)</h3>
                         <p class="text-gray-600 leading-relaxed">
                             Acompanhe seus silos de qualquer lugar do mundo. Os dados são enviados para um servidor seguro, permitindo o acesso ao dashboard de níveis através de uma URL exclusiva para a sua fazenda. Perfeito para gestão multissítio e controle remoto.
                         </p>
@@ -199,125 +249,220 @@
         </div>
     </section>
 
-    <!-- Catálogos Section -->
-    <section id="catalogos" class="py-20 bg-white">
+    <!--
+      ========================================================================
+      SEÇÃO DE PROVA (números / cases) — pronta para uso, desativada.
+
+      Uma página B2B converte muito mais com dados concretos. Deixei a
+      estrutura montada, mas SEM valores: preencha com os números reais da
+      ElowFlor antes de remover este comentário e publicar. Não invente
+      métricas aqui — o que estiver nesta seção é lido como compromisso
+      comercial.
+
+      Sugestões do que preencher: alcance real do LoRa em campo (km),
+      autonomia da bateria da RTU, intervalo de leitura, nº de silos ou
+      propriedades atendidas, e o case da Irrigação Mandala.
+
+    <section id="numeros" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <dl class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div>
+                    <dt class="text-sm text-gray-500 font-medium">Alcance LoRa em campo</dt>
+                    <dd class="text-3xl font-bold text-brand-teal mt-1">— km</dd>
+                </div>
+                <div>
+                    <dt class="text-sm text-gray-500 font-medium">Autonomia da RTU</dt>
+                    <dd class="text-3xl font-bold text-brand-teal mt-1">— meses</dd>
+                </div>
+                <div>
+                    <dt class="text-sm text-gray-500 font-medium">Intervalo de leitura</dt>
+                    <dd class="text-3xl font-bold text-brand-teal mt-1">— min</dd>
+                </div>
+                <div>
+                    <dt class="text-sm text-gray-500 font-medium">Silos monitorados</dt>
+                    <dd class="text-3xl font-bold text-brand-teal mt-1">—</dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+      ========================================================================
+    -->
+
+    <!--
+      Demonstração Section
+
+      Os botões de catálogo (PDFs de Sensores de Nível e Sistemas de Telemetria)
+      foram removidos porque o material ainda não existe — apontavam para "#".
+      Quando os catálogos ficarem prontos, reintroduza-os como ações secundárias
+      ao lado do botão do painel, com a mesma classe de borda cinza.
+    -->
+    <section id="demonstracao" class="py-20 sm:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-6">Catálogos e Especificações</h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
-                Acesse a documentação técnica completa dos nossos medidores e gateways e descubra os detalhes técnicos que fazem a diferença na sua produção.
+            <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-5 tracking-tight">Veja o sistema funcionando</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Abra o painel de demonstração e explore como os dados chegam até você: nível de armazenagem, temperatura, umidade e o histórico de cada silo, com alertas para as unidades que exigem atenção.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#" class="inline-flex items-center justify-center gap-2 border-2 border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-                    <i class="ph ph-file-pdf text-xl"></i>
-                    Sensores de Nível
-                </a>
-                <a href="#" class="inline-flex items-center justify-center gap-2 border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-                    <i class="ph ph-file-pdf text-xl"></i>
-                    Sistemas de Telemetria
-                </a>
-                <a href="/pages/dashboard.html"class="inline-flex items-center justify-center gap-2 border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-                    <i class="ph ph-app-window text-xl"></i>
-                    Exemplo visualização de Nível de Silo
-                </a>
-            </div>
+            <a href="/pages/dashboard.html" class="inline-flex items-center justify-center gap-2 bg-brand-teal hover:bg-brand-teal-deep text-white px-7 py-3.5 rounded-lg font-semibold transition-colors shadow-sm">
+                <i class="ph ph-app-window text-xl" aria-hidden="true"></i>
+                Abrir demonstração do painel
+            </a>
         </div>
     </section>
 
     <!-- Formulário de Contato Section -->
-    <section id="contato" class="py-20 bg-gray-50">
+    <section id="contato" class="py-20 sm:py-24 bg-gray-50 border-t border-gray-100">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">Solicite um Orçamento</h2>
-                <p class="text-gray-600">
+                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4 tracking-tight">Solicite um Orçamento</h2>
+                <p class="text-gray-600 leading-relaxed">
                     Preencha os dados abaixo e nossa equipe de engenharia entrará em contato para dimensionar a solução ideal para a sua estrutura.
                 </p>
             </div>
-            
-            <!-- Estilo do formulário similar ao da página de login -->
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden relative">
-                <div class="h-2 w-full bg-brand-teal"></div>
-                
+
+            <div class="bg-white rounded-2xl ring-1 ring-gray-200 shadow-sm overflow-hidden">
+                <div class="h-1.5 w-full bg-brand-teal"></div>
+
+                <!--
+                  ATENÇÃO — este formulário ainda NÃO envia nada.
+                  O GitHub Pages é estático e não processa POST: com action="#"
+                  a página recarrega e os dados se perdem.
+                  Para receber de verdade, troque o action por um endpoint de
+                  formulário (ex.: Formspree, Web3Forms) e remova este aviso.
+                  Enquanto isso, o botão de WhatsApp abaixo é o canal que funciona.
+                -->
                 <form action="#" method="POST" class="p-8 sm:p-10 space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Nome -->
                         <div class="md:col-span-2">
-                            <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+                            <label for="nome" class="block text-sm font-medium text-gray-700 mb-1.5">Nome Completo</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="ph ph-user text-gray-400 text-lg"></i>
+                                    <i class="ph ph-user text-gray-400 text-lg" aria-hidden="true"></i>
                                 </div>
-                                <input type="text" id="nome" name="nome" required
-                                    class="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue transition-shadow bg-gray-50 focus:bg-white"
+                                <input type="text" id="nome" name="nome" required autocomplete="name"
+                                    class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue transition bg-white"
                                     placeholder="João da Silva">
                             </div>
                         </div>
 
                         <!-- Email -->
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1.5">E-mail</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="ph ph-envelope-simple text-gray-400 text-lg"></i>
+                                    <i class="ph ph-envelope-simple text-gray-400 text-lg" aria-hidden="true"></i>
                                 </div>
-                                <input type="email" id="email" name="email" required
-                                    class="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue transition-shadow bg-gray-50 focus:bg-white"
+                                <input type="email" id="email" name="email" required autocomplete="email"
+                                    class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue transition bg-white"
                                     placeholder="seu@email.com">
                             </div>
                         </div>
 
                         <!-- Telefone -->
                         <div>
-                            <label for="telefone" class="block text-sm font-medium text-gray-700 mb-1">Telefone / WhatsApp</label>
+                            <label for="telefone" class="block text-sm font-medium text-gray-700 mb-1.5">Telefone / WhatsApp</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="ph ph-phone text-gray-400 text-lg"></i>
+                                    <i class="ph ph-phone text-gray-400 text-lg" aria-hidden="true"></i>
                                 </div>
-                                <input type="tel" id="telefone" name="telefone" required
-                                    class="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue transition-shadow bg-gray-50 focus:bg-white"
+                                <input type="tel" id="telefone" name="telefone" required autocomplete="tel" inputmode="tel"
+                                    class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue transition bg-white"
                                     placeholder="(00) 00000-0000">
                             </div>
                         </div>
 
                         <!-- Detalhes do Projeto -->
                         <div class="md:col-span-2">
-                            <label for="mensagem" class="block text-sm font-medium text-gray-700 mb-1">Detalhes do Projeto</label>
-                            <div class="relative">
-                                <textarea id="mensagem" name="mensagem" rows="4" required
-                                    class="block w-full p-3 border border-gray-200 rounded-xl text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-brand-blue transition-shadow bg-gray-50 focus:bg-white"
-                                    placeholder="Descreva sua necessidade, tipo de grão, altura dos silos, etc."></textarea>
-                            </div>
+                            <label for="mensagem" class="block text-sm font-medium text-gray-700 mb-1.5">Detalhes do Projeto</label>
+                            <textarea id="mensagem" name="mensagem" rows="4" required
+                                class="block w-full p-3 border border-gray-300 rounded-lg text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue transition bg-white"
+                                placeholder="Descreva sua necessidade, tipo de grão, altura dos silos, etc."></textarea>
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-brand-teal hover:bg-brand-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-teal transition-colors duration-300">
-                        <i class="ph ph-paper-plane-tilt text-lg"></i>
+                    <button type="submit" class="w-full flex justify-center items-center gap-2 py-3 px-4 rounded-lg shadow-sm text-sm font-bold text-white bg-brand-teal hover:bg-brand-teal-deep transition-colors">
+                        <i class="ph ph-paper-plane-tilt text-lg" aria-hidden="true"></i>
                         Enviar Solicitação
                     </button>
+
+                    <p class="text-center text-sm text-gray-500 pt-2">
+                        Prefere falar agora?
+                        <a href="https://wa.me/5511992048668" target="_blank" rel="noopener noreferrer"
+                           class="font-semibold text-brand-green hover:underline inline-flex items-center gap-1 py-1.5">
+                            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>Chame no WhatsApp
+                        </a>
+                    </p>
                 </form>
             </div>
         </div>
     </section>
 
+    </main>
+
     <!-- Rodapé -->
-    <footer class="bg-brand-teal text-white py-12 border-t border-brand-blue/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <a href="#" class="flex items-center gap-3">
-                <img src="/assets/icon.png" alt="Ícone ElowFlor" class="h-12 w-auto">
-                <img src="/assets/escrita.png" alt="Logo ElowFlor" class="h-20 w-auto brightness-0 invert">
-            </a>
-            <p class="text-teal-100 text-sm text-center md:text-left">
-                &copy; 2026 ElowFlor Soluções Agrícolas. Todos os direitos reservados.
-            </p>
-            <div class="flex gap-4">
-                <a href="https://www.instagram.com/elowflor/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-green transition-colors">
-                    <i class="ph ph-instagram-logo text-xl"></i>
-                </a>
-                <a href="https://www.linkedin.com/company/elowflor" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-green transition-colors">
-                    <i class="ph ph-linkedin-logo text-xl"></i>
-                </a>
-                <a href="https://wa.me/5511992048668" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-green transition-colors">
-                    <i class="ph ph-whatsapp-logo text-xl"></i>
-                </a>
+    <footer class="bg-brand-teal-deep text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Marca -->
+                <div>
+                    <a href="/" class="flex items-center gap-2.5 mb-4" aria-label="ElowFlor — página inicial">
+                        <img src="/assets/logo-mark.png" alt="" width="128" height="128" class="h-9 w-9">
+                        <img src="/assets/logo-wordmark-white.png" alt="ElowFlor" width="365" height="96" class="h-6 w-auto">
+                    </a>
+                    <p class="text-teal-100/80 text-sm leading-relaxed max-w-xs">
+                        Soluções de monitoramento e automação para o agronegócio: sensores, telemetria e dashboards sob medida.
+                    </p>
+                </div>
+
+                <!-- Navegação -->
+                <div>
+                    <h2 class="text-sm font-semibold tracking-wider uppercase text-teal-100/70 mb-4">Navegação</h2>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#solucoes" class="inline-block py-1.5 text-teal-50 hover:text-white hover:underline">Nossas Soluções</a></li>
+                        <li><a href="#demonstracao" class="inline-block py-1.5 text-teal-50 hover:text-white hover:underline">Demonstração</a></li>
+                        <li><a href="#contato" class="inline-block py-1.5 text-teal-50 hover:text-white hover:underline">Solicitar Orçamento</a></li>
+                        <li><a href="/pages/login.html" class="inline-block py-1.5 text-teal-50 hover:text-white hover:underline">Acesso Cliente</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contato -->
+                <div>
+                    <h2 class="text-sm font-semibold tracking-wider uppercase text-teal-100/70 mb-4">Contato</h2>
+                    <ul class="space-y-2.5 text-sm">
+                        <li>
+                            <a href="https://wa.me/5511992048668" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 py-1.5 text-teal-50 hover:text-white">
+                                <i class="ph ph-whatsapp-logo text-lg" aria-hidden="true"></i> (11) 99204-8668
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:elowflor@gmail.com" class="flex items-center gap-2 py-1.5 text-teal-50 hover:text-white">
+                                <i class="ph ph-envelope-simple text-lg" aria-hidden="true"></i> elowflor@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- TODO: adicionar CNPJ e endereço — dão credibilidade em site B2B -->
+
+                    <div class="flex gap-3 mt-6">
+                        <a href="https://www.instagram.com/elowflor/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da ElowFlor"
+                            class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-brand-green transition-colors">
+                            <i class="ph ph-instagram-logo text-xl" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/elowflor" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da ElowFlor"
+                            class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-brand-green transition-colors">
+                            <i class="ph ph-linkedin-logo text-xl" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://wa.me/5511992048668" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da ElowFlor"
+                            class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-brand-green transition-colors">
+                            <i class="ph ph-whatsapp-logo text-xl" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-6 border-t border-white/15 text-center md:text-left">
+                <p class="text-teal-100/70 text-sm">
+                    &copy; <span id="anoAtual">2026</span> ElowFlor Soluções Agrícolas. Todos os direitos reservados.
+                </p>
             </div>
         </div>
     </footer>
@@ -325,51 +470,106 @@
     <!-- Lógica do Carrossel e Menu -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Lógica do Carrossel Hero
+
+            // Ano do rodapé sempre atual
+            document.getElementById('anoAtual').textContent = new Date().getFullYear();
+
+            /* ---------------- Menu mobile ---------------- */
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+
+            function setMenu(open) {
+                mobileMenu.classList.toggle('hidden', !open);
+                menuToggle.setAttribute('aria-expanded', String(open));
+                menuToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+                menuIcon.classList.toggle('ph-list', !open);
+                menuIcon.classList.toggle('ph-x', open);
+            }
+
+            menuToggle.addEventListener('click', () => {
+                setMenu(mobileMenu.classList.contains('hidden'));
+            });
+
+            // Fecha ao navegar ou ao apertar Esc
+            mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                    setMenu(false);
+                    menuToggle.focus();
+                }
+            });
+
+            /* ---------------- Carrossel Hero ---------------- */
             const track = document.getElementById('carouselTrack');
             const prevBtn = document.getElementById('prevSlide');
             const nextBtn = document.getElementById('nextSlide');
-            const dots = document.querySelectorAll('.carousel-dot');
-            
+            const dots = Array.from(document.querySelectorAll('.carousel-dot'));
+            const hero = track.closest('section');
+
             let currentIndex = 0;
-            const totalSlides = 3;
+            const totalSlides = dots.length;
+            const AUTOPLAY_MS = 6000;
+            let timer = null;
+
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let paused = false; // true enquanto o ponteiro/foco estiver sobre o hero
 
             function updateCarousel() {
                 track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                
-                dots.forEach((dot, index) => {
-                    if (index === currentIndex) {
-                        dot.classList.replace('bg-white/40', 'bg-white');
-                        dot.classList.replace('hover:bg-white/70', 'bg-white');
-                    } else {
-                        dot.classList.replace('bg-white', 'bg-white/40');
-                        dot.classList.add('hover:bg-white/70');
-                    }
+                dots.forEach((btn, i) => {
+                    // O CSS deriva a aparência do ponto a partir deste atributo
+                    btn.setAttribute('aria-selected', String(i === currentIndex));
                 });
             }
 
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % totalSlides;
+            function goTo(index) {
+                currentIndex = (index + totalSlides) % totalSlides;
                 updateCarousel();
+                restartAutoplay(); // qualquer interação reinicia a contagem
             }
 
-            function prevSlide() {
-                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                updateCarousel();
+            function startAutoplay() {
+                if (reduceMotion) return;      // não gira sozinho para quem pediu menos movimento
+                if (paused || document.hidden) return;
+                if (timer) return;
+                timer = setInterval(() => goTo(currentIndex + 1), AUTOPLAY_MS);
             }
 
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
+            function stopAutoplay() {
+                clearInterval(timer);
+                timer = null;
+            }
 
-            dots.forEach(dot => {
-                dot.addEventListener('click', (e) => {
-                    currentIndex = parseInt(e.target.getAttribute('data-index'));
-                    updateCarousel();
-                });
+            // Reinicia a contagem após uma interação — mas continua parado
+            // se o ponteiro/foco ainda estiver sobre o hero.
+            function restartAutoplay() {
+                stopAutoplay();
+                startAutoplay();
+            }
+
+            function setPaused(v) {
+                paused = v;
+                v ? stopAutoplay() : startAutoplay();
+            }
+
+            nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+            prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+            dots.forEach(btn => btn.addEventListener('click', () => goTo(Number(btn.dataset.index))));
+
+            // Pausa enquanto o usuário está lendo / navegando pelo teclado
+            hero.addEventListener('mouseenter', () => setPaused(true));
+            hero.addEventListener('mouseleave', () => setPaused(false));
+            hero.addEventListener('focusin', () => setPaused(true));
+            hero.addEventListener('focusout', () => setPaused(false));
+
+            // Não gira em segundo plano
+            document.addEventListener('visibilitychange', () => {
+                document.hidden ? stopAutoplay() : startAutoplay();
             });
 
-            // Transição automática a cada 6 segundos
-            setInterval(nextSlide, 6000);
+            updateCarousel();
+            startAutoplay();
         });
     </script>
 </body>
