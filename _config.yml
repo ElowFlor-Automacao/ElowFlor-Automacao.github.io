@@ -1,0 +1,4 @@
+# GitHub Pages: publica só a página. Documentos do repositório e arquivos de trabalho ficam fora do site.
+exclude:
+  - PRODUCT.md
+  - README.md
