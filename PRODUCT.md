@@ -37,7 +37,8 @@ Os números vêm do campo sem ninguém digitar: estações próprias da ElowFlor
 - **O que medimos hoje:** litros de água, tempo de bomba ligada, chuva e umidade do solo. Uma estação pode ter vários sensores ligados nela.
 - **Termos na página:** "estação" para o aparelho de campo; "rádio de longo alcance"; "painel". Nenhuma sigla técnica ou nome interno de sistema.
 - **Fora da página:** silo como destaque, aplicação local por Wi-Fi, login e painel falsos, formulário que não envia, promessa de ganho de produtividade sem dado.
-- **Em aberto:** botão de acesso ao sistema (o sistema ainda não tem servidor); endereço final (endereço do GitHub ou domínio elowflor.com.br); fotos de campo e da estação; nomes de parceiros autorizados.
+- **Endereço:** https://elowflor.com.br (arquivo `CNAME`), desde 14/10/2026; o endereço antigo do GitHub leva para ele.
+- **Em aberto:** botão de acesso ao sistema (o sistema ainda não tem servidor); fotos de campo e da estação; nomes de parceiros autorizados.
 
 ## Brand Commitments
 
