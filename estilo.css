@@ -122,3 +122,13 @@ p { margin: 0; }
 .p404 h1 { font-size: clamp(1.75rem, 6vw, 2.75rem); }
 .p404 p { margin-top: 12px; color: var(--tinta-2); max-width: 46ch; }
 .p404-acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+
+.rodape-docs { margin-top: 8px; font-size: .875rem; }
+.rodape-docs a { display: inline-flex; align-items: center; min-height: 44px; }
+.documento { padding-top: 40px; padding-bottom: 64px; max-width: 72ch; }
+.documento h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); }
+.documento h2 { font-size: 1.25rem; margin-top: 32px; }
+.documento p, .documento li { color: var(--tinta-2); margin-top: 10px; }
+.documento ul { padding-left: 1.25rem; }
+.documento .doc-data { color: var(--tinta-3); font-size: .9375rem; }
+.documento a { color: var(--azul); }
