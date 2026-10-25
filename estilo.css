@@ -12,6 +12,7 @@
   --aviso: #6e4300; --aviso-fundo: #fff4d6; --aviso-borda: #e8c56a;
   --petroleo-anel: #cde5e7; --sobre-petroleo-2: #d3e8ea; --sobre-petroleo-3: #b5d6d9; --sobre-petroleo-linha: rgba(255,255,255,.24);
   --foco: 0 0 0 3px #ffffff, 0 0 0 5px var(--petroleo);
+  --foco-escuro: 0 0 0 2px var(--petroleo-escuro), 0 0 0 5px #ffffff;
   --raio: 12px;
   --curva: cubic-bezier(0.23, 1, 0.32, 1);
   --largura: 1120px;
@@ -25,6 +26,7 @@ body { margin: 0; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Ro
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--petroleo-escuro); text-underline-offset: 3px; }
 :focus-visible { outline: none; box-shadow: var(--foco); border-radius: 6px; }
+.cabecalho-escuro :focus-visible, .topo :focus-visible, .contato :focus-visible, .rodape :focus-visible { box-shadow: var(--foco-escuro); }
 h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance; margin: 0; }
 p { margin: 0; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
